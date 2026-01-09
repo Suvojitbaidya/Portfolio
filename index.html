@@ -1,0 +1,3427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suvojit Baidya | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --secondary: #2c3e50;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+            --light-gray: #f5f7fa;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light-gray);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Enhanced Background Animations */
+        @keyframes drift {
+            0% { transform: translateX(-100px) translateY(0px) rotate(0deg); }
+            33% { transform: translateX(100px) translateY(-50px) rotate(120deg); }
+            66% { transform: translateX(-50px) translateY(50px) rotate(240deg); }
+            100% { transform: translateX(-100px) translateY(0px) rotate(360deg); }
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 50%; transform: rotate(0deg); }
+            25% { border-radius: 30% 70% 70% 30%; transform: rotate(90deg); }
+            50% { border-radius: 70% 30% 30% 70%; transform: rotate(180deg); }
+            75% { border-radius: 40% 60% 60% 40%; transform: rotate(270deg); }
+        }
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(52, 152, 219, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bg-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation: drift 15s linear infinite;
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.15), rgba(155, 89, 182, 0.15));
+        }
+
+        .bg-circle:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            left: 80%;
+            animation: wave 8s ease-in-out infinite;
+            background: rgba(41, 128, 185, 0.15);
+        }
+
+        .bg-circle:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 80%;
+            left: 20%;
+            animation: morph 12s ease-in-out infinite;
+            background: rgba(52, 152, 219, 0.12);
+        }
+
+        .bg-circle:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            top: 30%;
+            right: 15%;
+            animation: float 10s ease-in-out infinite reverse;
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.12), rgba(52, 152, 219, 0.12));
+        }
+
+        .bg-circle:nth-child(5) {
+            width: 40px;
+            height: 40px;
+            top: 70%;
+            left: 60%;
+            animation: drift 20s linear infinite reverse;
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        .bg-circle:nth-child(6) {
+            width: 90px;
+            height: 90px;
+            top: 15%;
+            left: 70%;
+            animation: wave 14s ease-in-out infinite;
+            background: linear-gradient(90deg, rgba(243, 156, 18, 0.12), rgba(230, 126, 34, 0.12));
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        body.dark-mode header {
+            background-color: rgba(30, 30, 30, 0.95);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        body.dark-mode .nav-links a {
+            color: #e0e0e0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 20px;
+            transition: var(--transition);
+        }
+
+        .admin-toggle {
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 20px;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .theme-toggle,
+        body.dark-mode .admin-toggle {
+            color: #e0e0e0;
+        }
+
+        .theme-toggle:hover, .admin-toggle:hover {
+            color: var(--primary);
+            transform: rotate(15deg);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+            animation: float 4s ease-in-out infinite;
+            transition: var(--transition);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(52, 152, 219, 0.4);
+        }
+
+        .img-ring {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            border: 3px dashed var(--primary);
+            animation: spin 20s linear infinite;
+        }
+
+        /* New Interesting Animations */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px var(--primary); }
+            50% { box-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Animations */
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes rotateIn {
+            from { opacity: 0; transform: rotate(-10deg) translateY(30px); }
+            to { opacity: 1; transform: rotate(0deg) translateY(0); }
+        }
+
+        .timeline-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .project-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .project-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+            animation: scaleIn 0.8s ease-out;
+        }
+
+        .section-title {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .section-title.animate {
+            opacity: 1;
+            transform: translateY(0);
+            animation: rotateIn 0.8s ease-out;
+        }
+        /* Typewriter Animation */
+        .typewriter {
+            border-right: 2px solid var(--primary);
+            animation: blink 1s infinite;
+            display: inline-block;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: var(--primary); }
+            51%, 100% { border-color: transparent; }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            animation: slideInLeft 1s ease-out 0.5s both;
+        }
+
+        body.dark-mode .hero h1 {
+            color: #fff;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 500;
+            animation: slideInRight 1s ease-out 0.7s both;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--gray);
+            animation: slideInLeft 1s ease-out 0.9s both;
+        }
+
+        body.dark-mode .hero p {
+            color: #b0b0b0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Apply animations to elements */
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+            animation: glow 1s ease-in-out;
+        }
+
+        .social-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px) scale(1.1);
+            animation: bounce 0.6s ease;
+        }
+
+        .skill-list li:hover {
+            animation: shake 0.5s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            animation: zoomIn 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        body.dark-mode .section-title h2 {
+            color: #fff;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: pulse 2s infinite;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        body.dark-mode .about-text p {
+            color: #b0b0b0;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .stat-item {
+            background: #1e1e1e;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-text {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .about-image {
+            animation: slideInRight 1s ease-out;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .about-image img:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Education & Experience */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            position: relative;
+            transition: var(--transition);
+            width: calc(50% - 30px);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .timeline-item.animate {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: auto;
+        }
+
+        .timeline-item:nth-child(even).animate {
+            animation-name: slideInRight;
+        }
+
+        body.dark-mode .timeline-item {
+            background-color: #1e1e1e;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-item h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1.4rem;
+        }
+
+        .timeline-item .date {
+            color: var(--gray);
+            font-style: italic;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timeline-item .date i {
+            color: var(--primary);
+        }
+
+        .timeline-item ul {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+
+        .timeline-item li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .timeline-item li::before {
+            content: '▸';
+            color: var(--primary);
+            position: absolute;
+            left: -15px;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .skill-category.animate {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .skill-category:nth-child(even).animate {
+            animation-name: slideInRight;
+        }
+
+        body.dark-mode .skill-category {
+            background-color: #1e1e1e;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .skill-list li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-list li:hover {
+            padding-left: 10px;
+            background: rgba(52, 152, 219, 0.05);
+            border-radius: 5px;
+        }
+
+        .skill-list i {
+            color: var(--primary);
+            margin-right: 10px;
+            font-size: 1.1rem;
+            width: 25px;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .project-card.animate {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .project-card:nth-child(even).animate {
+            animation-name: slideInRight;
+        }
+
+        body.dark-mode .project-card {
+            background-color: #1e1e1e;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .project-content .tech {
+            display: inline-block;
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Contact Form */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-info {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .contact-info h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+
+        body.dark-mode .contact-detail {
+            color: #b0b0b0;
+        }
+
+        .contact-detail i {
+            color: var(--primary);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        .contact-form {
+            animation: slideInRight 1s ease-out;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        body.dark-mode .form-group label {
+            color: #e0e0e0;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: white;
+            color: var(--dark);
+        }
+
+        body.dark-mode .form-control {
+            background-color: #2c2c2c;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-message {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+        }
+
+        .form-message.success {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: var(--success);
+            border: 1px solid var(--success);
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+            display: block;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 2000;
+            transition: var(--transition);
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        body.dark-mode .admin-panel {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        .admin-panel.active {
+            right: 0;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .admin-header h2 {
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close-admin {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .close-admin {
+            color: #e0e0e0;
+        }
+
+        .close-admin:hover {
+            color: var(--danger);
+            transform: rotate(90deg);
+        }
+
+        .admin-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .admin-section {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-section h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-form-group {
+            margin-bottom: 15px;
+        }
+
+        .admin-form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .admin-form-group label {
+            color: #e0e0e0;
+        }
+
+        .admin-form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .admin-form-control {
+            background-color: #2c2c2c;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .admin-form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        textarea.admin-form-control {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        select.admin-form-control {
+            cursor: pointer;
+        }
+
+        .btn-admin {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .btn-admin:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background-color: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-success {
+            background-color: var(--success);
+        }
+
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+
+        .btn-warning {
+            background-color: var(--warning);
+        }
+
+        .btn-warning:hover {
+            background-color: #e67e22;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        body.dark-mode footer {
+            background-color: #0d0d0d;
+        }
+
+        .declaration {
+            max-width: 800px;
+            margin: 0 auto;
+            font-style: italic;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        /* Project Modal */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .project-modal.active {
+            display: flex;
+        }
+
+        .project-modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: zoomIn 0.3s ease;
+        }
+
+        body.dark-mode .project-modal-content {
+            background-color: #1e1e1e;
+        }
+
+        .project-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .project-modal-header h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .close-project-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .close-project-modal {
+            color: #e0e0e0;
+        }
+
+        .close-project-modal:hover {
+            color: var(--danger);
+            transform: rotate(90deg);
+        }
+        .email-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .email-modal.active {
+            display: flex;
+        }
+
+        .email-modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .email-modal-content {
+            background-color: #1e1e1e;
+        }
+
+        .email-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .email-modal-header h3 {
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close-email-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        body.dark-mode .close-email-modal {
+            color: #e0e0e0;
+        }
+
+        .email-method {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .email-method {
+            border-color: #444;
+        }
+
+        .email-method:hover {
+            border-color: var(--primary);
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+
+        .email-method.active {
+            border-color: var(--primary);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        .email-method h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .email-method p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .email-method .btn {
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                margin-left: 60px;
+            }
+            
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: var(--shadow);
+                padding: 20px 0;
+            }
+
+            body.dark-mode .nav-links {
+                background-color: #1e1e1e;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .admin-panel {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .email-modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        body.dark-mode .loader {
+            background-color: rgba(18, 18, 18, 0.9);
+        }
+
+        .loader.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(52, 152, 219, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <p id="loader-text">Sending message...</p>
+    </div>
+
+    <!-- Project Details Modal -->
+    <div class="project-modal" id="project-modal">
+        <div class="project-modal-content">
+            <div class="project-modal-header">
+                <h3 id="modal-project-title">Project Details</h3>
+                <button class="close-project-modal" id="close-project-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="modal-project-content">
+                <!-- Project details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Email Settings Modal -->
+    <div class="email-modal" id="email-modal">
+        <div class="email-modal-content">
+            <div class="email-modal-header">
+                <h3><i class="fas fa-envelope"></i> Email Configuration</h3>
+                <button class="close-email-modal" id="close-email-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="email-method active" id="formspree-method">
+                <h4><i class="fas fa-cloud"></i> Formspree (Recommended)</h4>
+                <p>Easiest method. No server setup required. Free for up to 50 submissions per month.</p>
+                <div class="admin-form-group">
+                    <label for="formspree-endpoint">Formspree Endpoint URL</label>
+                    <input type="text" id="formspree-endpoint" class="admin-form-control" placeholder="https://formspree.io/f/your-form-id">
+                </div>
+                <button class="btn btn-success" id="save-formspree">
+                    <i class="fas fa-save"></i> Save Formspree Settings
+                </button>
+                <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">
+                    <a href="https://formspree.io/" target="_blank">Get your Formspree endpoint</a>
+                </p>
+            </div>
+            
+            <div class="email-method" id="custom-method">
+                <h4><i class="fas fa-server"></i> Custom Backend</h4>
+                <p>Advanced method. Requires your own server with email sending capability.</p>
+                <div class="admin-form-group">
+                    <label for="backend-endpoint">Backend API URL</label>
+                    <input type="text" id="backend-endpoint" class="admin-form-control" placeholder="https://your-domain.com/send-email">
+                </div>
+                <button class="btn" id="save-backend">
+                    <i class="fas fa-save"></i> Save Backend Settings
+                </button>
+            </div>
+            
+            <div class="email-method" id="test-email">
+                <h4><i class="fas fa-paper-plane"></i> Test Email</h4>
+                <p>Send a test email to verify your configuration is working.</p>
+                <button class="btn btn-outline" id="send-test-email">
+                    <i class="fas fa-paper-plane"></i> Send Test Email
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-code logo-icon"></i>
+                    Suvojit Baidya
+                </a>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <button class="admin-toggle" id="admin-toggle" title="Admin Panel">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- COMPLETE ADMIN PANEL -->
+    <div class="admin-panel" id="admin-panel">
+        <div class="admin-header">
+            <h2><i class="fas fa-user-cog"></i> Admin Panel</h2>
+            <button class="close-admin" id="close-admin">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Email Configuration -->
+        <div class="admin-section">
+            <h3><i class="fas fa-envelope"></i> Email Configuration</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 15px; color: var(--gray);">
+                Configure how contact form messages are sent to your email.
+            </p>
+            <button class="btn-admin" id="configure-email">
+                <i class="fas fa-cogs"></i> Configure Email Settings
+            </button>
+            <div id="email-status" style="margin-top: 10px; font-size: 0.8rem; padding: 8px; border-radius: 5px; background: rgba(52, 152, 219, 0.1); display: none;">
+                <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                <span>Email is configured and ready to receive messages.</span>
+            </div>
+        </div>
+        
+        <!-- Personal Info Section -->
+        <div class="admin-section">
+            <h3><i class="fas fa-user"></i> Personal Information</h3>
+            <div class="admin-form-group">
+                <label for="admin-name">Full Name</label>
+                <input type="text" id="admin-name" class="admin-form-control" value="Suvojit Baidya">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-title">Professional Title</label>
+                <input type="text" id="admin-title" class="admin-form-control" value="Data Scientist & Full-Stack Developer">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-bio">Bio Description</label>
+                <textarea id="admin-bio" class="admin-form-control">MTech in Data Science with expertise in Machine Learning, Web Development using MERN Stack, and building data-driven solutions.</textarea>
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-profile-img">Profile Image URL</label>
+                <input type="text" id="admin-profile-img" class="admin-form-control" value="sandbox:/mnt/data/A_digital_photograph_features_a_young_South_Asian_.png">
+            </div>
+            <button class="btn-admin btn-success" id="save-personal">
+                <i class="fas fa-save"></i> Save Personal Info
+            </button>
+        </div>
+        
+        <!-- Education Section -->
+        <div class="admin-section">
+            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+            <div class="admin-form-group">
+                <label for="admin-mtech-degree">MTech Degree</label>
+                <input type="text" id="admin-mtech-degree" class="admin-form-control" value="Master of Technology in Data Science">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-mtech-university">MTech University</label>
+                <input type="text" id="admin-mtech-university" class="admin-form-control" value="Maulana Abul Kalam Azad University of Technology, West Bengal">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-btech-degree">BTech Degree</label>
+                <input type="text" id="admin-btech-degree" class="admin-form-control" value="Bachelor of Technology in Computer Science & Engineering">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-btech-college">BTech College</label>
+                <input type="text" id="admin-btech-college" class="admin-form-control" value="Dream Institute of Technology, Kolkata">
+            </div>
+            <button class="btn-admin btn-success" id="save-education">
+                <i class="fas fa-save"></i> Save Education
+            </button>
+        </div>
+        
+        <!-- Experience Section -->
+        <div class="admin-section">
+            <h3><i class="fas fa-briefcase"></i> Experience</h3>
+            <div class="admin-form-group">
+                <label>Select Experience</label>
+                <select id="experience-select" class="admin-form-control">
+                    <option value="0">NOI Software Pvt Ltd</option>
+                    <option value="1">Informatics Research Labs</option>
+                </select>
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-exp-title">Job Title</label>
+                <input type="text" id="admin-exp-title" class="admin-form-control">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-exp-company">Company</label>
+                <input type="text" id="admin-exp-company" class="admin-form-control">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-exp-period">Period (e.g., June 2024 - Present)</label>
+                <input type="text" id="admin-exp-period" class="admin-form-control">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-exp-details">Experience Details (one per line)</label>
+                <textarea id="admin-exp-details" class="admin-form-control"></textarea>
+            </div>
+            <button class="btn-admin btn-success" id="save-experience">
+                <i class="fas fa-save"></i> Save Experience
+            </button>
+        </div>
+        
+        <!-- Projects Section -->
+        <div class="admin-section">
+            <h3><i class="fas fa-project-diagram"></i> Projects</h3>
+            <div class="admin-form-group">
+                <label>Select Project</label>
+                <select id="project-select" class="admin-form-control">
+                    <option value="0">Minimal E-Commerce Store</option>
+                    <option value="1">Product Demand Prediction</option>
+                    <option value="2">TATA Steel Coil Defect Detection</option>
+                </select>
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-project-title">Project Title</label>
+                <input type="text" id="admin-project-title" class="admin-form-control">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-project-tech">Technology</label>
+                <input type="text" id="admin-project-tech" class="admin-form-control">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-project-details">Project Details (one per line)</label>
+                <textarea id="admin-project-details" class="admin-form-control"></textarea>
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-project-img">Project Image URL</label>
+                <input type="text" id="admin-project-img" class="admin-form-control">
+            </div>
+            <button class="btn-admin btn-success" id="save-project">
+                <i class="fas fa-save"></i> Save Project
+            </button>
+        </div>
+        
+        <!-- Skills Section -->
+        <div class="admin-section">
+            <h3><i class="fas fa-cogs"></i> Skills</h3>
+            <div class="admin-form-group">
+                <label>Skill Category</label>
+                <select id="skill-category-select" class="admin-form-control">
+                    <option value="0">Programming Languages</option>
+                    <option value="1">Data Science & ML</option>
+                    <option value="2">Web Development</option>
+                    <option value="3">Tools & Technologies</option>
+                </select>
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-skill-list">Skills (comma separated)</label>
+                <input type="text" id="admin-skill-list" class="admin-form-control">
+            </div>
+            <button class="btn-admin btn-success" id="save-skills">
+                <i class="fas fa-save"></i> Save Skills
+            </button>
+        </div>
+        
+        <!-- About Section -->
+        <div class="admin-section">
+            <h3><i class="fas fa-info-circle"></i> About Section</h3>
+            <div class="admin-form-group">
+                <label for="admin-about-title">About Title</label>
+                <input type="text" id="admin-about-title" class="admin-form-control" value="Passionate Developer & Data Scientist">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-about-text">About Text (Paragraph 1)</label>
+                <textarea id="admin-about-text" class="admin-form-control">I am a passionate Data Scientist and Full-Stack Developer with a Master's degree in Data Science. My expertise lies in building intelligent systems, developing scalable web applications, and solving complex problems using data-driven approaches.</textarea>
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-about-text2">About Text (Paragraph 2)</label>
+                <textarea id="admin-about-text2" class="admin-form-control">With experience in both software development and machine learning, I bridge the gap between data science and practical application development. I enjoy working on challenging projects that require both technical expertise and creative problem-solving.</textarea>
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-about-image">About Image URL</label>
+                <input type="text" id="admin-about-image" class="admin-form-control" value="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=500&q=80">
+            </div>
+            <button class="btn-admin btn-success" id="save-about">
+                <i class="fas fa-save"></i> Save About Section
+            </button>
+        </div>
+        
+        <!-- Contact Section -->
+        <div class="admin-section">
+            <h3><i class="fas fa-address-book"></i> Contact Information</h3>
+            <div class="admin-form-group">
+                <label for="admin-contact-location">Location</label>
+                <input type="text" id="admin-contact-location" class="admin-form-control" value="Kolkata, West Bengal, India">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-contact-email">Email</label>
+                <input type="email" id="admin-contact-email" class="admin-form-control" value="suvojitbaidya9230@gmail.com">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-contact-phone">Phone</label>
+                <input type="text" id="admin-contact-phone" class="admin-form-control" value="+91 98765 43210">
+            </div>
+            <button class="btn-admin btn-success" id="save-contact">
+                <i class="fas fa-save"></i> Save Contact Info
+            </button>
+        </div>
+        
+        <!-- Social Links Section -->
+        <div class="admin-section">
+            <h3><i class="fas fa-share-alt"></i> Social Media Links</h3>
+            <div class="admin-form-group">
+                <label for="admin-github-link">GitHub URL</label>
+                <input type="url" id="admin-github-link" class="admin-form-control" value="https://github.com/Suvojitbaidya">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-linkedin-link">LinkedIn URL</label>
+                <input type="url" id="admin-linkedin-link" class="admin-form-control" value="https://www.linkedin.com/in/suvojit-baidya">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-instagram-link">Instagram URL</label>
+                <input type="url" id="admin-instagram-link" class="admin-form-control" value="https://www.instagram.com/suvojit.baidya.106/">
+            </div>
+            <button class="btn-admin btn-success" id="save-social">
+                <i class="fas fa-save"></i> Save Social Links
+            </button>
+        </div>
+        
+        <!-- Theme Settings -->
+        <div class="admin-section">
+            <h3><i class="fas fa-palette"></i> Theme Settings</h3>
+            <div class="admin-form-group">
+                <label for="admin-primary-color">Primary Color</label>
+                <input type="color" id="admin-primary-color" class="admin-form-control" value="#3498db">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-secondary-color">Secondary Color</label>
+                <input type="color" id="admin-secondary-color" class="admin-form-control" value="#2c3e50">
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-font-family">Font Family</label>
+                <select id="admin-font-family" class="admin-form-control">
+                    <option value="Poppins">Poppins (Current)</option>
+                    <option value="Roboto">Roboto</option>
+                    <option value="Open Sans">Open Sans</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Raleway">Raleway</option>
+                </select>
+            </div>
+            <div class="admin-form-group">
+                <label for="admin-theme-mode">Theme Mode</label>
+                <select id="admin-theme-mode" class="admin-form-control">
+                    <option value="light">Light Mode</option>
+                    <option value="dark">Dark Mode</option>
+                    <option value="auto">Auto (System)</option>
+                </select>
+            </div>
+            <button class="btn-admin" id="save-theme">
+                <i class="fas fa-paint-brush"></i> Apply Theme
+            </button>
+            <button class="btn-admin btn-warning" id="reset-theme">
+                <i class="fas fa-undo"></i> Reset to Default
+            </button>
+        </div>
+        
+        <!-- Data Management -->
+        <div class="admin-section">
+            <h3><i class="fas fa-database"></i> Data Management</h3>
+            <button class="btn-admin" id="export-data">
+                <i class="fas fa-download"></i> Export Portfolio Data
+            </button>
+            <button class="btn-admin" id="import-data">
+                <i class="fas fa-upload"></i> Import Portfolio Data
+            </button>
+            <input type="file" id="import-file" style="display: none;" accept=".json">
+            <button class="btn-admin btn-danger" id="reset-data">
+                <i class="fas fa-trash"></i> Reset All Data
+            </button>
+            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">
+                <i class="fas fa-info-circle"></i> Note: All data is saved in browser's local storage
+            </p>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="profile-container">
+                <div class="img-ring"></div>
+                <img src="1photo.png" alt="Suvojit Baidya" class="profile-img" id="profile-img">
+            </div>
+            <h1 id="hero-name">Suvojit Baidya</h1>
+            <h2 id="hero-title" class="typewriter">Data Scientist & Full-Stack Developer</h2>
+            <p id="hero-bio">MTech in Data Science with expertise in Machine Learning, Web Development using MERN Stack, and building data-driven solutions.</p>
+            <a href="#projects" class="btn">View My Projects</a>
+            <a href="#contact" class="btn btn-outline" style="margin-left: 15px;">Contact Me</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 id="about-title">Passionate Developer & Data Scientist</h3>
+                    <p id="about-text1">I am a passionate Data Scientist and Full-Stack Developer with a Master's degree in Data Science. My expertise lies in building intelligent systems, developing scalable web applications, and solving complex problems using data-driven approaches.</p>
+                    <p id="about-text2">With experience in both software development and machine learning, I bridge the gap between data science and practical application development. I enjoy working on challenging projects that require both technical expertise and creative problem-solving.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-text">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1+</span>
+                            <span class="stat-text">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-text">Technologies</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-text">Client Satisfaction</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=500&q=80" alt="About Me" id="about-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item" id="education-mtech">
+                    <h3 id="mtech-degree">Master of Technology in Data Science</h3>
+                    <p class="date"><i class="fas fa-university"></i> <span id="mtech-university">Maulana Abul Kalam Azad University of Technology, West Bengal</span> | 2024-Present</p>
+                    <p>Specialized in Machine Learning, Deep Learning, Data Analytics, and Big Data Technologies.</p>
+                </div>
+                <div class="timeline-item" id="education-btech">
+                    <h3 id="btech-degree">Bachelor of Technology in Computer Science & Engineering</h3>
+                    <p class="date"><i class="fas fa-university"></i> <span id="btech-college">Dream Institute of Technology, Kolkata</span> | 2020-2024</p>
+                    <p>Focused on Software Engineering, Database Management, Algorithms, and Web Technologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experience</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item" id="experience-0">
+                    <h3 id="exp-title-0">Junior Python Developer Intern</h3>
+                    <p class="date"><i class="fas fa-building"></i> <span id="exp-company-0">NOI Software Pvt Ltd</span> | <span id="exp-period-0">June 2024 - Present</span></p>
+                    <ul id="exp-details-0">
+                        <li>Working on <strong>TATA Steel Coil Defect Detection</strong> project using OpenCV and Computer Vision</li>
+                        <li>Developing image processing algorithms for real-time defect detection in steel coils</li>
+                        <li>Implementing automated quality control systems to improve manufacturing efficiency</li>
+                        <li>Collaborating with senior developers to optimize computer vision models</li>
+                        <li>Participating in code reviews and contributing to team knowledge sharing</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item" id="experience-1">
+                    <h3 id="exp-title-1">Full-Stack Developer</h3>
+                    <p class="date"><i class="fas fa-laptop-code"></i> <span id="exp-company-1">Informatics Research Labs</span> | <span id="exp-period-1">2023 - 2024</span></p>
+                    <ul id="exp-details-1">
+                        <li>Developed & deployed a fully responsive <strong>MERN</strong> stack portfolio web app, achieving 100% mobile responsiveness.</li>
+                        <li>Built dual frontends—an <strong>admin panel</strong> for content management and a <strong>user interface</strong> for portfolio browsing.</li>
+                        <li>Enhanced website efficiency, improving page load speed by 35% through code splitting and optimized <strong>API calls</strong>.</li>
+                        <li>Integrated <strong>MongoDB</strong> to store and manage attendance records, students' information, course overview and results.</li>
+                        <li>Implemented authentication & security, ensuring 99.9% uptime and secure API calls.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" id="project-card-0">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80" alt="E-Commerce Store" class="project-img" id="project-img-0">
+                    <div class="project-content">
+                        <h3 id="project-title-0">Minimal E-Commerce Store <span class="tech" id="project-tech-0">MERN Stack</span></h3>
+                        <ul id="project-details-0">
+                            <li>Implemented secure <strong>JWT-based authentication</strong> and role-based access control.</li>
+                            <li>Optimized API calls and database queries, achieving <strong>40% faster</strong> response time.</li>
+                            <li>Integrated payment gateways (e.g., <strong>UPI</strong>) reducing checkout failures by <strong>25%</strong>.</li>
+                            <li>Designed admin dashboard with <strong>real-time sales analytics</strong> and order tracking.</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" class="btn view-project-btn" data-project="0">View Project</a>
+                            <a href="https://github.com/Suvojitbaidya/E-commerce" target="_blank" class="btn btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card" id="project-card-1">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80" alt="Machine Learning" class="project-img" id="project-img-1">
+                    <div class="project-content">
+                        <h3 id="project-title-1">Product Demand Prediction <span class="tech" id="project-tech-1">Machine Learning</span></h3>
+                        <ul id="project-details-1">
+                            <li>Processed <strong>24000+</strong> historical sales records for accurate model training.</li>
+                            <li>Engineered <strong>10+</strong> custom features to enhance predictive accuracy.</li>
+                            <li>Developed ML models (<strong>Random Forest, SVM</strong>), achieving 15% improvement in forecasting accuracy.</li>
+                            <li>Evaluated model using <strong>RMSE</strong>, reducing error by 20% compared to baseline.</li>
+                            <li>Implemented <strong>data-driven</strong> forecasting, reducing stockouts by 10%.</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" class="btn view-project-btn" data-project="1">View Project</a>
+                            <a href="https://github.com/Suvojitbaidya/ProductDemandprediction" target="_blank" class="btn btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card" id="project-card-2">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80" alt="TATA Steel Project" class="project-img" id="project-img-2">
+                    <div class="project-content">
+                        <h3 id="project-title-2">TATA Steel Coil Defect Detection <span class="tech" id="project-tech-2">OpenCV | Python</span></h3>
+                        <ul id="project-details-2">
+                            <li>Developing computer vision system for <strong>real-time defect detection</strong> in steel coils</li>
+                            <li>Implementing <strong>image processing algorithms</strong> to identify surface imperfections</li>
+                            <li>Using <strong>OpenCV</strong> for feature extraction and pattern recognition</li>
+                            <li>Creating automated quality control system to improve manufacturing efficiency</li>
+                            <li>Reducing manual inspection time by <strong>60%</strong> through automation</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" class="btn view-project-btn" data-project="2">View Project</a>
+                            <a href="https://github.com/SonuBaidya/tataproject" target="_blank" class="btn btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category" id="skill-category-0">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <ul class="skill-list" id="skill-list-0">
+                        <li><i class="fab fa-python"></i> Python</li>
+                        <li><i class="fab fa-java"></i> Java</li>
+                        <li><i class="fab fa-js"></i> JavaScript</li>
+                        <li><i class="fas fa-code"></i> C++</li>
+                    </ul>
+                </div>
+                <div class="skill-category" id="skill-category-1">
+                    <h3><i class="fas fa-brain"></i> Data Science & ML</h3>
+                    <ul class="skill-list" id="skill-list-1">
+                        <li><i class="fas fa-chart-line"></i> Machine Learning</li>
+                        <li><i class="fas fa-robot"></i> Deep Learning</li>
+                        <li><i class="fas fa-eye"></i> Computer Vision (OpenCV)</li>
+                        <li><i class="fas fa-chart-bar"></i> Data Analysis</li>
+                        <li><i class="fas fa-project-diagram"></i> Neural Networks</li>
+                    </ul>
+                </div>
+                <div class="skill-category" id="skill-category-2">
+                    <h3><i class="fas fa-globe"></i> Web Development</h3>
+                    <ul class="skill-list" id="skill-list-2">
+                        <li><i class="fab fa-html5"></i> HTML, CSS, Bootstrap</li>
+                        <li><i class="fab fa-react"></i> React</li>
+                        <li><i class="fab fa-node-js"></i> Node.js, Express</li>
+                        <li><i class="fas fa-database"></i> MongoDB (MERN Stack)</li>
+                        <li><i class="fab fa-js"></i> REST APIs</li>
+                    </ul>
+                </div>
+                <div class="skill-category" id="skill-category-3">
+                    <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
+                    <ul class="skill-list" id="skill-list-3">
+                        <li><i class="fab fa-git"></i> Git & GitHub</li>
+                        <li><i class="fas fa-database"></i> SQL, MongoDB, Oracle</li>
+                        <li><i class="fas fa-chart-pie"></i> Tableau, Power BI</li>
+                        <li><i class="fas fa-server"></i> AWS, Heroku</li>
+                        <li><i class="fas fa-cogs"></i> Docker, Jenkins</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>I'm always open to discussing new opportunities, interesting projects, or potential collaborations.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Location</strong>
+                                <p id="contact-location">Kolkata, West Bengal, India</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <p id="contact-email">suvojitbaidya9230@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Phone</strong>
+                                <p id="contact-phone">+91 98765 43210</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/Suvojitbaidya" target="_blank" class="social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/suvojit-baidya" target="_blank" class="social-link" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/suvojit.baidya.106/" target="_blank" class="social-link" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name *</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email *</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        
+                        <div id="form-message" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year">2024</span> <span id="footer-name">Suvojit Baidya</span>. All Rights Reserved.</p>
+            <div class="declaration">
+                <p id="declaration-text">I am Suvojit Baidya hereby declare that all the above mentioned in this resume are true.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const adminToggle = document.getElementById('admin-toggle');
+        const adminPanel = document.getElementById('admin-panel');
+        const closeAdmin = document.getElementById('close-admin');
+        const loader = document.getElementById('loader');
+        const loaderText = document.getElementById('loader-text');
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('form-message');
+        const importFileInput = document.getElementById('import-file');
+        const projectModal = document.getElementById('project-modal');
+        const closeProjectModal = document.getElementById('close-project-modal');
+        const modalProjectTitle = document.getElementById('modal-project-title');
+        const modalProjectContent = document.getElementById('modal-project-content');
+        
+        // Project details data
+        const projectDetails = {
+            0: {
+                title: "Minimal E-Commerce Store",
+                tech: "MERN Stack (MongoDB, Express.js, React, Node.js)",
+                description: "A full-featured e-commerce platform built with modern web technologies, focusing on user experience and performance.",
+                features: [
+                    "User Authentication & Authorization with JWT tokens",
+                    "Product catalog with search and filtering capabilities",
+                    "Shopping cart and wishlist functionality",
+                    "Secure payment integration with multiple gateways",
+                    "Admin dashboard for inventory and order management",
+                    "Real-time order tracking and notifications",
+                    "Responsive design for all devices",
+                    "RESTful API architecture"
+                ],
+                challenges: "Implementing secure payment processing, optimizing database queries for large product catalogs, and ensuring scalable architecture.",
+                outcome: "Successfully reduced checkout failures by 25% and improved page load speeds by 40% through optimized API calls."
+            },
+            1: {
+                title: "Product Demand Prediction",
+                tech: "Python, Scikit-learn, Pandas, NumPy, Matplotlib",
+                description: "Machine learning project to predict product demand using historical sales data and advanced forecasting algorithms.",
+                features: [
+                    "Data preprocessing and cleaning of 24,000+ sales records",
+                    "Feature engineering with 10+ custom variables",
+                    "Multiple ML models: Random Forest, SVM, Linear Regression",
+                    "Time series analysis and seasonal trend detection",
+                    "Model evaluation using RMSE and MAE metrics",
+                    "Interactive visualizations for demand patterns",
+                    "Automated model retraining pipeline",
+                    "Business intelligence dashboard"
+                ],
+                challenges: "Handling seasonal variations, dealing with missing data, and selecting optimal features for accurate predictions.",
+                outcome: "Achieved 15% improvement in forecasting accuracy and reduced stockouts by 10% through data-driven insights."
+            },
+            2: {
+                title: "TATA Steel Coil Defect Detection",
+                tech: "Python, OpenCV, Computer Vision, Image Processing",
+                description: "Computer vision system for automated quality control in steel manufacturing, detecting surface defects in real-time.",
+                features: [
+                    "Real-time image processing and analysis",
+                    "Advanced defect detection algorithms",
+                    "Pattern recognition using OpenCV",
+                    "Automated quality scoring system",
+                    "Integration with manufacturing workflow",
+                    "Detailed defect classification and reporting",
+                    "Performance monitoring and analytics",
+                    "User-friendly interface for operators"
+                ],
+                challenges: "Achieving high accuracy in varying lighting conditions, processing high-resolution images in real-time, and minimizing false positives.",
+                outcome: "Reduced manual inspection time by 60% and improved defect detection accuracy, enhancing overall manufacturing efficiency."
+            }
+        };
+        
+        // Email configuration with default Formspree setup
+        let emailConfig = {
+            method: 'formspree',
+            endpoint: 'https://formspree.io/f/xgoowvpw',
+            configured: true
+        };
+        
+        const emailModal = document.getElementById('email-modal');
+        const closeEmailModal = document.getElementById('close-email-modal');
+        const configureEmailBtn = document.getElementById('configure-email');
+        const emailStatus = document.getElementById('email-status');
+        
+        // Project Modal Event Listeners
+        document.querySelectorAll('.view-project-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectId = btn.getAttribute('data-project');
+                showProjectModal(projectId);
+            });
+        });
+        
+        closeProjectModal.addEventListener('click', () => {
+            projectModal.classList.remove('active');
+        });
+        
+        projectModal.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                projectModal.classList.remove('active');
+            }
+        });
+        
+        function showProjectModal(projectId) {
+            const project = projectDetails[projectId];
+            modalProjectTitle.textContent = project.title;
+            
+            modalProjectContent.innerHTML = `
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-cogs"></i> Technology Stack</h4>
+                    <p style="background: rgba(52, 152, 219, 0.1); padding: 10px; border-radius: 5px; margin-bottom: 15px;">${project.tech}</p>
+                    
+                    <h4 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-info-circle"></i> Project Overview</h4>
+                    <p style="margin-bottom: 20px; line-height: 1.6;">${project.description}</p>
+                    
+                    <h4 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-list"></i> Key Features</h4>
+                    <ul style="margin-bottom: 20px; padding-left: 20px;">
+                        ${project.features.map(feature => `<li style="margin-bottom: 8px;">${feature}</li>`).join('')}
+                    </ul>
+                    
+                    <h4 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-exclamation-triangle"></i> Challenges Faced</h4>
+                    <p style="margin-bottom: 20px; line-height: 1.6; font-style: italic;">${project.challenges}</p>
+                    
+                    <h4 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-trophy"></i> Results & Impact</h4>
+                    <p style="background: rgba(46, 204, 113, 0.1); padding: 15px; border-radius: 5px; border-left: 4px solid var(--success); line-height: 1.6;">${project.outcome}</p>
+                </div>
+            `;
+            
+            projectModal.classList.add('active');
+        }
+        
+        // Typewriter Effect
+        function typewriterEffect() {
+            const element = document.getElementById('hero-title');
+            const texts = ['Data Scientist', 'Full-Stack Developer', 'Machine Learning Engineer', 'Web Developer'];
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            
+            function type() {
+                const currentText = texts[textIndex];
+                
+                if (isDeleting) {
+                    element.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    element.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                
+                let typeSpeed = isDeleting ? 50 : 100;
+                
+                if (!isDeleting && charIndex === currentText.length) {
+                    typeSpeed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                    typeSpeed = 500;
+                }
+                
+                setTimeout(type, typeSpeed);
+            }
+            
+            type();
+        }
+        // Current year for footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Start typewriter effect
+        setTimeout(typewriterEffect, 1500);
+            
+        // Initialize with saved data
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load all saved data
+            loadAllData();
+            
+            // Initialize animations on scroll
+            initAnimations();
+            
+            // Check email configuration
+            checkEmailConfig();
+        });
+        
+        // Load all saved data from localStorage
+        function loadAllData() {
+            // Load email configuration
+            const savedEmailConfig = localStorage.getItem('portfolio-email-config');
+            if (savedEmailConfig) {
+                emailConfig = JSON.parse(savedEmailConfig);
+                if (emailConfig.endpoint) {
+                    document.getElementById('formspree-endpoint').value = emailConfig.endpoint;
+                }
+            }
+            
+            // Check for saved theme
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            if (savedTheme === 'light') {
+                document.body.classList.remove('dark-mode');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                document.getElementById('admin-theme-mode').value = 'light';
+            } else {
+                // Default to dark mode
+                document.body.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                document.getElementById('admin-theme-mode').value = 'dark';
+                localStorage.setItem('portfolio-theme', 'dark');
+            }
+            
+            // Check for saved colors
+            const savedPrimaryColor = localStorage.getItem('portfolio-primary-color');
+            const savedSecondaryColor = localStorage.getItem('portfolio-secondary-color');
+            if (savedPrimaryColor) {
+                document.documentElement.style.setProperty('--primary', savedPrimaryColor);
+                document.documentElement.style.setProperty('--primary-dark', adjustColor(savedPrimaryColor, -20));
+                document.getElementById('admin-primary-color').value = savedPrimaryColor;
+            }
+            if (savedSecondaryColor) {
+                document.documentElement.style.setProperty('--secondary', savedSecondaryColor);
+                document.documentElement.style.setProperty('--dark', savedSecondaryColor);
+                document.getElementById('admin-secondary-color').value = savedSecondaryColor;
+            }
+            
+            // Check for saved font
+            const savedFont = localStorage.getItem('portfolio-font');
+            if (savedFont) {
+                document.body.style.fontFamily = `${savedFont}, sans-serif`;
+                document.getElementById('admin-font-family').value = savedFont;
+            }
+            
+            // Load saved portfolio data from localStorage
+            loadPortfolioData();
+            
+            // Set up admin form values with current data
+            setupAdminForm();
+        }
+        
+        // Check email configuration
+        function checkEmailConfig() {
+            if (emailConfig.configured && emailConfig.endpoint) {
+                emailStatus.style.display = 'block';
+                emailStatus.innerHTML = `<i class="fas fa-check-circle" style="color: var(--success);"></i> Email is configured and ready to receive messages.`;
+            } else {
+                emailStatus.style.display = 'block';
+                emailStatus.innerHTML = `<i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i> Email is not configured. Messages won't be sent.`;
+                emailStatus.style.background = 'rgba(243, 156, 18, 0.1)';
+            }
+        }
+        
+        // Helper function to adjust color brightness
+        function adjustColor(color, amount) {
+            const num = parseInt(color.slice(1), 16);
+            const r = Math.min(255, Math.max(0, (num >> 16) + amount));
+            const g = Math.min(255, Math.max(0, ((num >> 8) & 0x00FF) + amount));
+            const b = Math.min(255, Math.max(0, (num & 0x0000FF) + amount));
+            return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+        }
+        
+        // Mobile Menu Toggle
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Dark/Light Mode Toggle
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('portfolio-theme', 'dark');
+                document.getElementById('admin-theme-mode').value = 'dark';
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('portfolio-theme', 'light');
+                document.getElementById('admin-theme-mode').value = 'light';
+            }
+        });
+        
+        // Admin Panel Toggle with Password
+        adminToggle.addEventListener('click', () => {
+            const password = prompt('Enter admin password:');
+            if (password === 'admin123') {
+                adminPanel.classList.add('active');
+                // Refresh form values when opening
+                setupAdminForm();
+            } else if (password !== null) {
+                alert('Incorrect password!');
+            }
+        });
+        
+        closeAdmin.addEventListener('click', () => {
+            adminPanel.classList.remove('active');
+        });
+        
+        // Close admin panel when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!adminPanel.contains(e.target) && !adminToggle.contains(e.target) && adminPanel.classList.contains('active')) {
+                adminPanel.classList.remove('active');
+            }
+        });
+        
+        // Email Modal
+        configureEmailBtn.addEventListener('click', () => {
+            emailModal.classList.add('active');
+            adminPanel.classList.remove('active');
+        });
+        
+        closeEmailModal.addEventListener('click', () => {
+            emailModal.classList.remove('active');
+        });
+        
+        // Close email modal when clicking outside
+        emailModal.addEventListener('click', (e) => {
+            if (e.target === emailModal) {
+                emailModal.classList.remove('active');
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize animations on scroll
+        function initAnimations() {
+            const animatedElements = document.querySelectorAll('.timeline-item, .skill-category, .project-card, .about-text, .about-image, .contact-info, .contact-form, .section-title');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animate');
+                        }, index * 100);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        // Load portfolio data from localStorage
+        function loadPortfolioData() {
+            // Personal Info
+            const personalInfo = JSON.parse(localStorage.getItem('portfolio-personal')) || {};
+            if (personalInfo.name) {
+                document.getElementById('hero-name').textContent = personalInfo.name;
+                document.getElementById('footer-name').textContent = personalInfo.name;
+                document.getElementById('admin-name').value = personalInfo.name;
+            }
+            if (personalInfo.title) {
+                document.getElementById('hero-title').textContent = personalInfo.title;
+                document.getElementById('admin-title').value = personalInfo.title;
+            }
+            if (personalInfo.bio) {
+                document.getElementById('hero-bio').textContent = personalInfo.bio;
+                document.getElementById('admin-bio').value = personalInfo.bio;
+            }
+            if (personalInfo.profileImg) {
+                document.getElementById('profile-img').src = personalInfo.profileImg;
+                document.getElementById('admin-profile-img').value = personalInfo.profileImg;
+            }
+            
+            // Education
+            const education = JSON.parse(localStorage.getItem('portfolio-education')) || {};
+            if (education.mtechDegree) {
+                document.getElementById('mtech-degree').textContent = education.mtechDegree;
+                document.getElementById('admin-mtech-degree').value = education.mtechDegree;
+            }
+            if (education.mtechUniversity) {
+                document.getElementById('mtech-university').textContent = education.mtechUniversity;
+                document.getElementById('admin-mtech-university').value = education.mtechUniversity;
+            }
+            if (education.btechDegree) {
+                document.getElementById('btech-degree').textContent = education.btechDegree;
+                document.getElementById('admin-btech-degree').value = education.btechDegree;
+            }
+            if (education.btechCollege) {
+                document.getElementById('btech-college').textContent = education.btechCollege;
+                document.getElementById('admin-btech-college').value = education.btechCollege;
+            }
+            
+            // Experience
+            const experiences = JSON.parse(localStorage.getItem('portfolio-experiences')) || getDefaultExperiences();
+            experiences.forEach((exp, index) => {
+                if (exp.title) document.getElementById(`exp-title-${index}`).textContent = exp.title;
+                if (exp.company) document.getElementById(`exp-company-${index}`).textContent = exp.company;
+                if (exp.period) document.getElementById(`exp-period-${index}`).textContent = exp.period;
+                if (exp.details) {
+                    const list = document.getElementById(`exp-details-${index}`);
+                    list.innerHTML = '';
+                    exp.details.split('\n').forEach(detail => {
+                        if (detail.trim()) {
+                            const li = document.createElement('li');
+                            li.innerHTML = detail;
+                            list.appendChild(li);
+                        }
+                    });
+                }
+            });
+            
+            // Projects
+            const projects = JSON.parse(localStorage.getItem('portfolio-projects')) || getDefaultProjects();
+            projects.forEach((project, index) => {
+                if (project.title) document.getElementById(`project-title-${index}`).textContent = project.title;
+                if (project.tech) document.getElementById(`project-tech-${index}`).textContent = project.tech;
+                if (project.details) {
+                    const list = document.getElementById(`project-details-${index}`);
+                    list.innerHTML = '';
+                    project.details.split('\n').forEach(detail => {
+                        if (detail.trim()) {
+                            const li = document.createElement('li');
+                            li.innerHTML = detail;
+                            list.appendChild(li);
+                        }
+                    });
+                }
+                if (project.img) document.getElementById(`project-img-${index}`).src = project.img;
+            });
+            
+            // Skills
+            const skills = JSON.parse(localStorage.getItem('portfolio-skills')) || getDefaultSkills();
+            skills.forEach((skillCategory, index) => {
+                if (skillCategory.skills) {
+                    const list = document.getElementById(`skill-list-${index}`);
+                    list.innerHTML = '';
+                    skillCategory.skills.split(',').forEach(skill => {
+                        if (skill.trim()) {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<i class="fas fa-caret-right"></i> ${skill.trim()}`;
+                            list.appendChild(li);
+                        }
+                    });
+                }
+            });
+            
+            // About Section
+            const about = JSON.parse(localStorage.getItem('portfolio-about')) || {};
+            if (about.title) {
+                document.getElementById('about-title').textContent = about.title;
+                document.getElementById('admin-about-title').value = about.title;
+            }
+            if (about.text1) {
+                document.getElementById('about-text1').textContent = about.text1;
+                document.getElementById('admin-about-text').value = about.text1;
+            }
+            if (about.text2) {
+                document.getElementById('about-text2').textContent = about.text2;
+                document.getElementById('admin-about-text2').value = about.text2;
+            }
+            if (about.image) {
+                document.getElementById('about-image').src = about.image;
+                document.getElementById('admin-about-image').value = about.image;
+            }
+            
+            // Contact Info
+            const contact = JSON.parse(localStorage.getItem('portfolio-contact')) || {};
+            if (contact.location) {
+                document.getElementById('contact-location').textContent = contact.location;
+                document.getElementById('admin-contact-location').value = contact.location;
+            }
+            if (contact.email) {
+                document.getElementById('contact-email').textContent = contact.email;
+                document.getElementById('admin-contact-email').value = contact.email;
+            }
+            if (contact.phone) {
+                document.getElementById('contact-phone').textContent = contact.phone;
+                document.getElementById('admin-contact-phone').value = contact.phone;
+            }
+            
+            // Social Links
+            const socialLinks = JSON.parse(localStorage.getItem('portfolio-social')) || {};
+            if (socialLinks.github) {
+                document.querySelector('.social-links a[title="GitHub"]').href = socialLinks.github;
+                document.getElementById('admin-github-link').value = socialLinks.github;
+            }
+            if (socialLinks.linkedin) {
+                document.querySelector('.social-links a[title="LinkedIn"]').href = socialLinks.linkedin;
+                document.getElementById('admin-linkedin-link').value = socialLinks.linkedin;
+            }
+            if (socialLinks.instagram) {
+                document.querySelector('.social-links a[title="Instagram"]').href = socialLinks.instagram;
+                document.getElementById('admin-instagram-link').value = socialLinks.instagram;
+            }
+        }
+        
+        // Get default experiences
+        function getDefaultExperiences() {
+            return [
+                {
+                    title: "Junior Python Developer Intern",
+                    company: "NOI Software Pvt Ltd",
+                    period: "June 2024 - Present",
+                    details: "Working on TATA Steel Coil Defect Detection project using OpenCV and Computer Vision\nDeveloping image processing algorithms for real-time defect detection in steel coils\nImplementing automated quality control systems to improve manufacturing efficiency\nCollaborating with senior developers to optimize computer vision models\nParticipating in code reviews and contributing to team knowledge sharing"
+                },
+                {
+                    title: "Full-Stack Developer",
+                    company: "Informatics Research Labs",
+                    period: "2023 - 2024",
+                    details: "Developed & deployed a fully responsive MERN stack portfolio web app, achieving 100% mobile responsiveness\nBuilt dual frontends—an admin panel for content management and a user interface for portfolio browsing\nEnhanced website efficiency, improving page load speed by 35% through code splitting and optimized API calls\nIntegrated MongoDB to store and manage attendance records, students' information, course overview and results\nImplemented authentication & security, ensuring 99.9% uptime and secure API calls"
+                }
+            ];
+        }
+        
+        // Get default projects
+        function getDefaultProjects() {
+            return [
+                {
+                    title: "Minimal E-Commerce Store",
+                    tech: "MERN Stack",
+                    details: "Implemented secure JWT-based authentication and role-based access control\nOptimized API calls and database queries, achieving 40% faster response time\nIntegrated payment gateways (e.g., UPI) reducing checkout failures by 25%\nDesigned admin dashboard with real-time sales analytics and order tracking",
+                    img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80"
+                },
+                {
+                    title: "Product Demand Prediction",
+                    tech: "Machine Learning",
+                    details: "Processed 24000+ historical sales records for accurate model training\nEngineered 10+ custom features to enhance predictive accuracy\nDeveloped ML models (Random Forest, SVM), achieving 15% improvement in forecasting accuracy\nEvaluated model using RMSE, reducing error by 20% compared to baseline\nImplemented data-driven forecasting, reducing stockouts by 10%",
+                    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80"
+                },
+                {
+                    title: "TATA Steel Coil Defect Detection",
+                    tech: "OpenCV | Python",
+                    details: "Developing computer vision system for real-time defect detection in steel coils\nImplementing image processing algorithms to identify surface imperfections\nUsing OpenCV for feature extraction and pattern recognition\nCreating automated quality control system to improve manufacturing efficiency\nReducing manual inspection time by 60% through automation",
+                    img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80"
+                }
+            ];
+        }
+        
+        // Get default skills
+        function getDefaultSkills() {
+            return [
+                { skills: "Python, Java, JavaScript, C++" },
+                { skills: "Machine Learning, Deep Learning, Computer Vision (OpenCV), Data Analysis, Neural Networks" },
+                { skills: "HTML, CSS, Bootstrap, React, Node.js, Express, MongoDB (MERN Stack), REST APIs" },
+                { skills: "Git & GitHub, SQL, MongoDB, Oracle, Tableau, Power BI, AWS, Heroku, Docker, Jenkins" }
+            ];
+        }
+        
+        // Setup admin form with current values
+        function setupAdminForm() {
+            // Load current experiences into dropdown
+            const experiences = JSON.parse(localStorage.getItem('portfolio-experiences')) || getDefaultExperiences();
+            
+            // Experience dropdown change
+            document.getElementById('experience-select').addEventListener('change', function() {
+                const index = parseInt(this.value);
+                
+                document.getElementById('admin-exp-title').value = experiences[index]?.title || '';
+                document.getElementById('admin-exp-company').value = experiences[index]?.company || '';
+                document.getElementById('admin-exp-period').value = experiences[index]?.period || '';
+                document.getElementById('admin-exp-details').value = experiences[index]?.details || '';
+            });
+            
+            // Project dropdown change
+            document.getElementById('project-select').addEventListener('change', function() {
+                const index = parseInt(this.value);
+                const projects = JSON.parse(localStorage.getItem('portfolio-projects')) || getDefaultProjects();
+                
+                document.getElementById('admin-project-title').value = projects[index]?.title || '';
+                document.getElementById('admin-project-tech').value = projects[index]?.tech || '';
+                document.getElementById('admin-project-details').value = projects[index]?.details || '';
+                document.getElementById('admin-project-img').value = projects[index]?.img || '';
+            });
+            
+            // Skill category dropdown change
+            document.getElementById('skill-category-select').addEventListener('change', function() {
+                const index = parseInt(this.value);
+                const skills = JSON.parse(localStorage.getItem('portfolio-skills')) || getDefaultSkills();
+                
+                document.getElementById('admin-skill-list').value = skills[index]?.skills || '';
+            });
+            
+            // Set initial values for dropdowns
+            document.getElementById('experience-select').dispatchEvent(new Event('change'));
+            document.getElementById('project-select').dispatchEvent(new Event('change'));
+            document.getElementById('skill-category-select').dispatchEvent(new Event('change'));
+        }
+        
+        // Show loader
+        function showLoader(text = 'Sending message...') {
+            loaderText.textContent = text;
+            loader.classList.add('active');
+        }
+        
+        // Hide loader
+        function hideLoader() {
+            loader.classList.remove('active');
+        }
+        
+        // Show notification
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `form-message ${type}`;
+            notification.textContent = message;
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.zIndex = '9999';
+            notification.style.maxWidth = '300px';
+            notification.style.padding = '15px';
+            notification.style.borderRadius = '5px';
+            notification.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
+            
+            if (type === 'success') {
+                notification.style.backgroundColor = 'rgba(46, 204, 113, 0.9)';
+                notification.style.color = 'white';
+                notification.style.border = '1px solid #27ae60';
+            } else if (type === 'error') {
+                notification.style.backgroundColor = 'rgba(231, 76, 60, 0.9)';
+                notification.style.color = 'white';
+                notification.style.border = '1px solid #c0392b';
+            } else if (type === 'warning') {
+                notification.style.backgroundColor = 'rgba(243, 156, 18, 0.9)';
+                notification.style.color = 'white';
+                notification.style.border = '1px solid #d35400';
+            }
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.5s';
+                setTimeout(() => {
+                    notification.remove();
+                }, 500);
+            }, 3000);
+        }
+        
+        // Show form message
+        function showFormMessage(text, type) {
+            formMessage.textContent = text;
+            formMessage.className = `form-message ${type}`;
+            
+            // Scroll to message
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                formMessage.style.opacity = '0';
+                formMessage.style.transition = 'opacity 0.5s';
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                    formMessage.style.opacity = '1';
+                }, 500);
+            }, 5000);
+        }
+        
+        // Save Formspree Settings
+        document.getElementById('save-formspree').addEventListener('click', () => {
+            const endpoint = document.getElementById('formspree-endpoint').value.trim();
+            
+            if (!endpoint) {
+                showNotification('Please enter your Formspree endpoint URL.', 'error');
+                return;
+            }
+            
+            // Validate URL
+            if (!endpoint.startsWith('https://formspree.io/f/')) {
+                showNotification('Please enter a valid Formspree endpoint URL (should start with https://formspree.io/f/).', 'error');
+                return;
+            }
+            
+            emailConfig = {
+                method: 'formspree',
+                endpoint: endpoint,
+                configured: true
+            };
+            
+            localStorage.setItem('portfolio-email-config', JSON.stringify(emailConfig));
+            
+            checkEmailConfig();
+            showNotification('Formspree settings saved successfully!', 'success');
+            emailModal.classList.remove('active');
+        });
+        
+        // Save Backend Settings
+        document.getElementById('save-backend').addEventListener('click', () => {
+            const endpoint = document.getElementById('backend-endpoint').value.trim();
+            
+            if (!endpoint) {
+                showNotification('Please enter your backend API URL.', 'error');
+                return;
+            }
+            
+            // Validate URL
+            if (!endpoint.startsWith('http://') && !endpoint.startsWith('https://')) {
+                showNotification('Please enter a valid URL (should start with http:// or https://).', 'error');
+                return;
+            }
+            
+            emailConfig = {
+                method: 'backend',
+                endpoint: endpoint,
+                configured: true
+            };
+            
+            localStorage.setItem('portfolio-email-config', JSON.stringify(emailConfig));
+            
+            checkEmailConfig();
+            showNotification('Backend settings saved successfully!', 'success');
+            emailModal.classList.remove('active');
+        });
+        
+        // Send Test Email
+        document.getElementById('send-test-email').addEventListener('click', () => {
+            if (!emailConfig.configured || !emailConfig.endpoint) {
+                showNotification('Please configure email settings first.', 'error');
+                return;
+            }
+            
+            const testData = {
+                name: 'Test User',
+                email: 'test@example.com',
+                subject: 'Test Email from Portfolio',
+                message: 'This is a test email to verify that your portfolio contact form is working correctly. If you receive this, email configuration is successful!'
+            };
+            
+            sendEmail(testData, true);
+        });
+        
+        // Send Email Function
+        async function sendEmail(data, isTest = false) {
+            showLoader(isTest ? 'Sending test email...' : 'Sending message...');
+            
+            try {
+                let response;
+                
+                if (emailConfig.method === 'formspree') {
+                    // Formspree method
+                    const formData = new FormData();
+                    formData.append('name', data.name);
+                    formData.append('email', data.email);
+                    formData.append('subject', data.subject || 'No Subject');
+                    formData.append('message', data.message);
+                    
+                    response = await fetch(emailConfig.endpoint, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                } else {
+                    // Custom backend method
+                    response = await fetch(emailConfig.endpoint, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+                }
+                
+                if (response.ok) {
+                    if (isTest) {
+                        showNotification('Test email sent successfully! Check your inbox.', 'success');
+                    } else {
+                        showFormMessage('Thank you for your message! I will get back to you soon.', 'success');
+                        contactForm.reset();
+                    }
+                } else {
+                    const errorText = await response.text();
+                    console.error('Email error:', errorText);
+                    
+                    if (isTest) {
+                        showNotification('Failed to send test email. Check your configuration.', 'error');
+                    } else {
+                        showFormMessage('Sorry, there was an error sending your message. Please try again later.', 'error');
+                    }
+                }
+            } catch (error) {
+                console.error('Network error:', error);
+                
+                if (isTest) {
+                    showNotification('Network error. Please check your internet connection.', 'error');
+                } else {
+                    showFormMessage('Network error. Please check your internet connection and try again.', 'error');
+                }
+            } finally {
+                hideLoader();
+            }
+        }
+        
+        // Contact Form Submission
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            // Validation
+            if (!name || !email || !message) {
+                showFormMessage('Please fill in all required fields.', 'error');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showFormMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+            
+            // Check if email is configured
+            if (!emailConfig.configured || !emailConfig.endpoint) {
+                // Show message that email is not configured but form was submitted
+                showFormMessage('Thank you for your message! Since email is not configured, please contact me directly at suvojitbaidya9230@gmail.com', 'warning');
+                contactForm.reset();
+                return;
+            }
+            
+            const formData = {
+                name,
+                email,
+                subject: subject || 'No Subject',
+                message
+            };
+            
+            // Send the email
+            await sendEmail(formData, false);
+        });
+        
+        // ADMIN FORM SAVE HANDLERS
+        
+        // Save Personal Info
+        document.getElementById('save-personal').addEventListener('click', () => {
+            const personalInfo = {
+                name: document.getElementById('admin-name').value,
+                title: document.getElementById('admin-title').value,
+                bio: document.getElementById('admin-bio').value,
+                profileImg: document.getElementById('admin-profile-img').value
+            };
+            
+            localStorage.setItem('portfolio-personal', JSON.stringify(personalInfo));
+            
+            // Update UI
+            document.getElementById('hero-name').textContent = personalInfo.name;
+            document.getElementById('footer-name').textContent = personalInfo.name;
+            document.getElementById('hero-title').textContent = personalInfo.title;
+            document.getElementById('hero-bio').textContent = personalInfo.bio;
+            document.getElementById('profile-img').src = personalInfo.profileImg;
+            
+            showNotification('Personal information saved successfully!');
+        });
+        
+        // Save Education
+        document.getElementById('save-education').addEventListener('click', () => {
+            const education = {
+                mtechDegree: document.getElementById('admin-mtech-degree').value,
+                mtechUniversity: document.getElementById('admin-mtech-university').value,
+                btechDegree: document.getElementById('admin-btech-degree').value,
+                btechCollege: document.getElementById('admin-btech-college').value
+            };
+            
+            localStorage.setItem('portfolio-education', JSON.stringify(education));
+            
+            // Update UI
+            document.getElementById('mtech-degree').textContent = education.mtechDegree;
+            document.getElementById('mtech-university').textContent = education.mtechUniversity;
+            document.getElementById('btech-degree').textContent = education.btechDegree;
+            document.getElementById('btech-college').textContent = education.btechCollege;
+            
+            showNotification('Education details saved successfully!');
+        });
+        
+        // Save Experience
+        document.getElementById('save-experience').addEventListener('click', () => {
+            const index = parseInt(document.getElementById('experience-select').value);
+            const experiences = JSON.parse(localStorage.getItem('portfolio-experiences')) || getDefaultExperiences();
+            
+            experiences[index] = {
+                title: document.getElementById('admin-exp-title').value,
+                company: document.getElementById('admin-exp-company').value,
+                period: document.getElementById('admin-exp-period').value,
+                details: document.getElementById('admin-exp-details').value
+            };
+            
+            localStorage.setItem('portfolio-experiences', JSON.stringify(experiences));
+            
+            // Update UI
+            document.getElementById(`exp-title-${index}`).textContent = experiences[index].title;
+            document.getElementById(`exp-company-${index}`).textContent = experiences[index].company;
+            document.getElementById(`exp-period-${index}`).textContent = experiences[index].period;
+            
+            const list = document.getElementById(`exp-details-${index}`);
+            list.innerHTML = '';
+            experiences[index].details.split('\n').forEach(detail => {
+                if (detail.trim()) {
+                    const li = document.createElement('li');
+                    li.innerHTML = detail;
+                    list.appendChild(li);
+                }
+            });
+            
+            showNotification('Experience details saved successfully!');
+        });
+        
+        // Save Project
+        document.getElementById('save-project').addEventListener('click', () => {
+            const index = parseInt(document.getElementById('project-select').value);
+            const projects = JSON.parse(localStorage.getItem('portfolio-projects')) || getDefaultProjects();
+            
+            projects[index] = {
+                title: document.getElementById('admin-project-title').value,
+                tech: document.getElementById('admin-project-tech').value,
+                details: document.getElementById('admin-project-details').value,
+                img: document.getElementById('admin-project-img').value
+            };
+            
+            localStorage.setItem('portfolio-projects', JSON.stringify(projects));
+            
+            // Update UI
+            document.getElementById(`project-title-${index}`).textContent = projects[index].title;
+            document.getElementById(`project-tech-${index}`).textContent = projects[index].tech;
+            
+            const list = document.getElementById(`project-details-${index}`);
+            list.innerHTML = '';
+            projects[index].details.split('\n').forEach(detail => {
+                if (detail.trim()) {
+                    const li = document.createElement('li');
+                    li.innerHTML = detail;
+                    list.appendChild(li);
+                }
+            });
+            
+            document.getElementById(`project-img-${index}`).src = projects[index].img;
+            
+            showNotification('Project details saved successfully!');
+        });
+        
+        // Save Skills
+        document.getElementById('save-skills').addEventListener('click', () => {
+            const index = parseInt(document.getElementById('skill-category-select').value);
+            const skills = JSON.parse(localStorage.getItem('portfolio-skills')) || getDefaultSkills();
+            
+            skills[index] = {
+                skills: document.getElementById('admin-skill-list').value
+            };
+            
+            localStorage.setItem('portfolio-skills', JSON.stringify(skills));
+            
+            // Update UI
+            const list = document.getElementById(`skill-list-${index}`);
+            list.innerHTML = '';
+            skills[index].skills.split(',').forEach(skill => {
+                if (skill.trim()) {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<i class="fas fa-caret-right"></i> ${skill.trim()}`;
+                    list.appendChild(li);
+                }
+            });
+            
+            showNotification('Skills saved successfully!');
+        });
+        
+        // Save About Section
+        document.getElementById('save-about').addEventListener('click', () => {
+            const about = {
+                title: document.getElementById('admin-about-title').value,
+                text1: document.getElementById('admin-about-text').value,
+                text2: document.getElementById('admin-about-text2').value,
+                image: document.getElementById('admin-about-image').value
+            };
+            
+            localStorage.setItem('portfolio-about', JSON.stringify(about));
+            
+            // Update UI
+            document.getElementById('about-title').textContent = about.title;
+            document.getElementById('about-text1').textContent = about.text1;
+            document.getElementById('about-text2').textContent = about.text2;
+            document.getElementById('about-image').src = about.image;
+            
+            showNotification('About section saved successfully!');
+        });
+        
+        // Save Contact Info
+        document.getElementById('save-contact').addEventListener('click', () => {
+            const contact = {
+                location: document.getElementById('admin-contact-location').value,
+                email: document.getElementById('admin-contact-email').value,
+                phone: document.getElementById('admin-contact-phone').value
+            };
+            
+            localStorage.setItem('portfolio-contact', JSON.stringify(contact));
+            
+            // Update UI
+            document.getElementById('contact-location').textContent = contact.location;
+            document.getElementById('contact-email').textContent = contact.email;
+            document.getElementById('contact-phone').textContent = contact.phone;
+            
+            showNotification('Contact information saved successfully!');
+        });
+        
+        // Save Social Links
+        document.getElementById('save-social').addEventListener('click', () => {
+            const socialLinks = {
+                github: document.getElementById('admin-github-link').value,
+                linkedin: document.getElementById('admin-linkedin-link').value,
+                instagram: document.getElementById('admin-instagram-link').value
+            };
+            
+            localStorage.setItem('portfolio-social', JSON.stringify(socialLinks));
+            
+            // Update UI
+            const socialLinksElements = document.querySelectorAll('.social-links a');
+            socialLinksElements[0].href = socialLinks.github;
+            socialLinksElements[1].href = socialLinks.linkedin;
+            socialLinksElements[2].href = socialLinks.instagram;
+            
+            showNotification('Social links saved successfully!');
+        });
+        
+        // Save Theme
+        document.getElementById('save-theme').addEventListener('click', () => {
+            const primaryColor = document.getElementById('admin-primary-color').value;
+            const secondaryColor = document.getElementById('admin-secondary-color').value;
+            const fontFamily = document.getElementById('admin-font-family').value;
+            const themeMode = document.getElementById('admin-theme-mode').value;
+            
+            // Update CSS variables
+            document.documentElement.style.setProperty('--primary', primaryColor);
+            document.documentElement.style.setProperty('--primary-dark', adjustColor(primaryColor, -20));
+            document.documentElement.style.setProperty('--secondary', secondaryColor);
+            document.documentElement.style.setProperty('--dark', secondaryColor);
+            
+            // Update font
+            document.body.style.fontFamily = `${fontFamily}, sans-serif`;
+            
+            // Update theme mode
+            localStorage.setItem('portfolio-theme', themeMode);
+            if (themeMode === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else if (themeMode === 'light') {
+                document.body.classList.remove('dark-mode');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else if (themeMode === 'auto') {
+                // Check system preference
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.body.classList.add('dark-mode');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('portfolio-primary-color', primaryColor);
+            localStorage.setItem('portfolio-secondary-color', secondaryColor);
+            localStorage.setItem('portfolio-font', fontFamily);
+            
+            showNotification('Theme applied successfully!');
+        });
+        
+        // Reset Theme
+        document.getElementById('reset-theme').addEventListener('click', () => {
+            // Reset to default colors
+            document.documentElement.style.setProperty('--primary', '#3498db');
+            document.documentElement.style.setProperty('--primary-dark', '#2980b9');
+            document.documentElement.style.setProperty('--secondary', '#2c3e50');
+            document.documentElement.style.setProperty('--dark', '#2c3e50');
+            
+            // Reset font
+            document.body.style.fontFamily = "'Poppins', sans-serif";
+            
+            // Reset theme mode
+            localStorage.setItem('portfolio-theme', 'light');
+            document.body.classList.remove('dark-mode');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+            
+            // Update form values
+            document.getElementById('admin-primary-color').value = '#3498db';
+            document.getElementById('admin-secondary-color').value = '#2c3e50';
+            document.getElementById('admin-font-family').value = 'Poppins';
+            document.getElementById('admin-theme-mode').value = 'light';
+            
+            // Remove from localStorage
+            localStorage.removeItem('portfolio-primary-color');
+            localStorage.removeItem('portfolio-secondary-color');
+            localStorage.removeItem('portfolio-font');
+            
+            showNotification('Theme reset to default!', 'warning');
+        });
+        
+        // Export Data
+        document.getElementById('export-data').addEventListener('click', () => {
+            const portfolioData = {
+                personal: JSON.parse(localStorage.getItem('portfolio-personal')) || {},
+                education: JSON.parse(localStorage.getItem('portfolio-education')) || {},
+                experiences: JSON.parse(localStorage.getItem('portfolio-experiences')) || getDefaultExperiences(),
+                projects: JSON.parse(localStorage.getItem('portfolio-projects')) || getDefaultProjects(),
+                skills: JSON.parse(localStorage.getItem('portfolio-skills')) || getDefaultSkills(),
+                about: JSON.parse(localStorage.getItem('portfolio-about')) || {},
+                contact: JSON.parse(localStorage.getItem('portfolio-contact')) || {},
+                emailConfig: emailConfig,
+                theme: {
+                    primaryColor: localStorage.getItem('portfolio-primary-color') || '#3498db',
+                    secondaryColor: localStorage.getItem('portfolio-secondary-color') || '#2c3e50',
+                    font: localStorage.getItem('portfolio-font') || 'Poppins',
+                    themeMode: localStorage.getItem('portfolio-theme') || 'light'
+                }
+            };
+            
+            const dataStr = JSON.stringify(portfolioData, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            const exportFileDefaultName = 'portfolio-data.json';
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            showNotification('Portfolio data exported successfully!');
+        });
+        
+        // Import Data
+        document.getElementById('import-data').addEventListener('click', () => {
+            importFileInput.click();
+        });
+        
+        importFileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const portfolioData = JSON.parse(event.target.result);
+                    
+                    // Save all data to localStorage
+                    if (portfolioData.personal) localStorage.setItem('portfolio-personal', JSON.stringify(portfolioData.personal));
+                    if (portfolioData.education) localStorage.setItem('portfolio-education', JSON.stringify(portfolioData.education));
+                    if (portfolioData.experiences) localStorage.setItem('portfolio-experiences', JSON.stringify(portfolioData.experiences));
+                    if (portfolioData.projects) localStorage.setItem('portfolio-projects', JSON.stringify(portfolioData.projects));
+                    if (portfolioData.skills) localStorage.setItem('portfolio-skills', JSON.stringify(portfolioData.skills));
+                    if (portfolioData.about) localStorage.setItem('portfolio-about', JSON.stringify(portfolioData.about));
+                    if (portfolioData.contact) localStorage.setItem('portfolio-contact', JSON.stringify(portfolioData.contact));
+                    if (portfolioData.emailConfig) {
+                        localStorage.setItem('portfolio-email-config', JSON.stringify(portfolioData.emailConfig));
+                        emailConfig = portfolioData.emailConfig;
+                    }
+                    
+                    // Apply theme if exists
+                    if (portfolioData.theme) {
+                        if (portfolioData.theme.primaryColor) {
+                            localStorage.setItem('portfolio-primary-color', portfolioData.theme.primaryColor);
+                        }
+                        if (portfolioData.theme.secondaryColor) {
+                            localStorage.setItem('portfolio-secondary-color', portfolioData.theme.secondaryColor);
+                        }
+                        if (portfolioData.theme.font) {
+                            localStorage.setItem('portfolio-font', portfolioData.theme.font);
+                        }
+                        if (portfolioData.theme.themeMode) {
+                            localStorage.setItem('portfolio-theme', portfolioData.theme.themeMode);
+                        }
+                    }
+                    
+                    // Reload page to apply all changes
+                    location.reload();
+                    
+                } catch (error) {
+                    showNotification('Error importing file. Please check the file format.', 'error');
+                }
+            };
+            reader.readAsText(file);
+        });
+        
+        // Reset All Data
+        document.getElementById('reset-data').addEventListener('click', () => {
+            if (confirm('Are you sure you want to reset ALL data? This cannot be undone and will restore all sections to default values.')) {
+                // Clear all localStorage items
+                localStorage.clear();
+                
+                // Reset email config
+                emailConfig = {
+                    method: 'formspree',
+                    endpoint: '',
+                    configured: false
+                };
+                
+                // Reload the page to show default data
+                location.reload();
+            }
+        });
+        
+        // Initialize animations after page load
+        window.addEventListener('load', () => {
+            setTimeout(initAnimations, 500);
+        });
+    </script>
+</body>
+</html>
