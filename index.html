@@ -94,6 +94,71 @@
             50% { border-radius: 70% 30% 30% 70%; transform: rotate(180deg); }
             75% { border-radius: 40% 60% 60% 40%; transform: rotate(270deg); }
         }
+
+        @keyframes fall {
+            to { transform: translate3d(-30em, 0, 0); }
+        }
+
+        @keyframes tailFade {
+            0%, 50% { width: var(--star-tail-length); opacity: 1; }
+            70%, 80% { width: 0; opacity: 0.4; }
+            100% { width: 0; opacity: 0; }
+        }
+
+        @keyframes blink {
+            50% { opacity: 0.6; }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            transform: rotate(-45deg);
+            z-index: -1;
+        }
+
+        .star {
+            --star-color: var(--primary);
+            --star-tail-length: 6em;
+            --star-tail-height: 2px;
+            --star-width: calc(var(--star-tail-length) / 6);
+            --fall-duration: 9s;
+            position: absolute;
+            width: var(--star-tail-length);
+            height: var(--star-tail-height);
+            color: var(--star-color);
+            background: linear-gradient(45deg, currentColor, transparent);
+            border-radius: 50%;
+            filter: drop-shadow(0 0 6px currentColor);
+            transform: translate3d(104em, 0, 0);
+            animation: fall var(--fall-duration) linear infinite, tailFade var(--fall-duration) ease-out infinite;
+        }
+
+        .star:nth-child(1) { --star-tail-length: 6.5em; --top-offset: 10vh; --fall-duration: 8s; --fall-delay: 1s; top: var(--top-offset); animation-delay: var(--fall-delay); }
+        .star:nth-child(2) { --star-tail-length: 7em; --top-offset: 25vh; --fall-duration: 10s; --fall-delay: 3s; top: var(--top-offset); animation-delay: var(--fall-delay); }
+        .star:nth-child(3) { --star-tail-length: 5.5em; --top-offset: 40vh; --fall-duration: 7s; --fall-delay: 5s; top: var(--top-offset); animation-delay: var(--fall-delay); }
+        .star:nth-child(4) { --star-tail-length: 6.8em; --top-offset: 60vh; --fall-duration: 9s; --fall-delay: 2s; top: var(--top-offset); animation-delay: var(--fall-delay); }
+        .star:nth-child(5) { --star-tail-length: 7.2em; --top-offset: 75vh; --fall-duration: 11s; --fall-delay: 6s; top: var(--top-offset); animation-delay: var(--fall-delay); }
+        .star:nth-child(6) { --star-tail-length: 5.8em; --top-offset: 15vh; --fall-duration: 8.5s; --fall-delay: 4s; top: var(--top-offset); animation-delay: var(--fall-delay); }
+        .star:nth-child(7) { --star-tail-length: 6.3em; --top-offset: 35vh; --fall-duration: 9.5s; --fall-delay: 7s; top: var(--top-offset); animation-delay: var(--fall-delay); }
+        .star:nth-child(8) { --star-tail-length: 7.5em; --top-offset: 50vh; --fall-duration: 10.5s; --fall-delay: 1.5s; top: var(--top-offset); animation-delay: var(--fall-delay); }
+
+        .star::before, .star::after {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: calc(var(--star-width) / -2);
+            width: var(--star-width);
+            height: 100%;
+            background: linear-gradient(45deg, transparent, currentColor, transparent);
+            border-radius: inherit;
+            animation: blink 2s linear infinite;
+        }
+
+        .star::before { transform: rotate(45deg); }
+        .star::after { transform: rotate(-45deg); }
         /* Animated Background */
         .bg-animation {
             position: fixed;
@@ -164,6 +229,37 @@
             left: 70%;
             animation: wave 14s ease-in-out infinite;
             background: linear-gradient(90deg, rgba(243, 156, 18, 0.12), rgba(230, 126, 34, 0.12));
+        }
+
+        .bg-circle:nth-child(7) {
+            width: 70px;
+            height: 70px;
+            top: 45%;
+            left: 5%;
+            animation: morph 18s ease-in-out infinite;
+            background: linear-gradient(180deg, rgba(142, 68, 173, 0.1), rgba(74, 144, 226, 0.1));
+        }
+
+        .bg-circle:nth-child(8) {
+            width: 110px;
+            height: 110px;
+            top: 25%;
+            left: 45%;
+            animation: drift 25s linear infinite;
+            background: rgba(52, 73, 94, 0.08);
+        }
+
+        .bg-circle:nth-child(9) {
+            width: 50px;
+            height: 50px;
+            top: 85%;
+            right: 25%;
+            animation: wave 16s ease-in-out infinite;
+            background: linear-gradient(45deg, rgba(26, 188, 156, 0.1), rgba(22, 160, 133, 0.1));
+        }
+
+        .shooting-star {
+            display: none;
         }
 
         /* Header & Navigation */
@@ -447,7 +543,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
-            border: none;
+            border: 2px solid var(--primary);
             cursor: pointer;
             position: relative;
             overflow: hidden;
@@ -508,6 +604,7 @@
             background: transparent;
             color: var(--primary);
             border: 2px solid var(--primary);
+            margin-left: 10px;
         }
 
         .btn-outline:hover {
@@ -1453,6 +1550,17 @@
                 width: 95%;
                 padding: 20px;
             }
+            
+            .hero {
+                text-align: center;
+            }
+            
+            .hero .btn {
+                display: inline-block;
+                margin: 10px 5px;
+                width: auto;
+                min-width: 140px;
+            }
         }
 
         /* Loading Animation */
@@ -1498,6 +1606,21 @@
         <div class="bg-circle"></div>
         <div class="bg-circle"></div>
         <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+
+    <!-- Advanced Shooting Stars -->
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
     </div>
 
     <!-- Loading Overlay -->
@@ -1889,7 +2012,7 @@
             <h2 id="hero-title" class="typewriter">Data Scientist & Full-Stack Developer</h2>
             <p id="hero-bio">MTech in Data Science with expertise in Machine Learning, Web Development using MERN Stack, and building data-driven solutions.</p>
             <a href="#projects" class="btn">View My Projects</a>
-            <a href="#contact" class="btn btn-outline" style="margin-left: 15px;">Contact Me</a>
+            <a href="#contact" class="btn btn-outline" style="margin-left: 10px;">Contact Me</a>
         </div>
     </section>
 
