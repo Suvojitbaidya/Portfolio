@@ -117,6 +117,11 @@
             height: 120%;
             transform: rotate(-45deg);
             z-index: -1;
+            display: none;
+        }
+
+        body.dark-mode .stars {
+            display: block;
         }
 
         .star {
@@ -134,6 +139,15 @@
             filter: drop-shadow(0 0 6px currentColor);
             transform: translate3d(104em, 0, 0);
             animation: fall var(--fall-duration) linear infinite, tailFade var(--fall-duration) ease-out infinite;
+        }
+
+        body.dark-mode .star {
+            --star-color: rgba(255, 255, 255, 0.9);
+        }
+
+        body:not(.dark-mode) .star {
+            --star-color: rgba(52, 152, 219, 0.8);
+            filter: drop-shadow(0 0 8px rgba(52, 152, 219, 0.6));
         }
 
         .star:nth-child(1) { --star-tail-length: 6.5em; --top-offset: 10vh; --fall-duration: 8s; --fall-delay: 1s; top: var(--top-offset); animation-delay: var(--fall-delay); }
